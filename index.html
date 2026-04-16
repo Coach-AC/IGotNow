@@ -1,10 +1,674 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Panthers DBL</title>
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「我即当下」黑豹篮球暑期精英训练营 2025</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #e8e8e8;
+            color: #1a1a1a;
+        }
+        .article-wrapper {
+            max-width: 677px;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        /* ── HERO ── */
+        .hero { background: #080808; }
+        .hero-logo-bar {
+            display: flex;
+            justify-content: center;
+            padding: 24px 20px 18px;
+            border-bottom: 1px solid #1e1e1e;
+        }
+        .logo-placeholder {
+            width: 88px; height: 88px;
+            border: 2px dashed #C9A84C;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #C9A84C; font-size: 11px; text-align: center; line-height: 1.6;
+        }
+        .hero-content { padding: 40px 24px 44px; text-align: center; }
+        .hero-eyebrow {
+            display: inline-block;
+            background: #C9A84C; color: #000;
+            font-size: 10px; font-weight: 800;
+            letter-spacing: 4px; padding: 5px 18px;
+            text-transform: uppercase; margin-bottom: 24px;
+        }
+        .hero-title-en {
+            font-size: 56px; font-weight: 900;
+            color: #fff; letter-spacing: 3px;
+            line-height: 1; margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .hero-title-zh {
+            font-size: 26px; font-weight: 700;
+            color: #C9A84C; letter-spacing: 10px; margin-bottom: 28px;
+        }
+        .hero-rule { width: 56px; height: 2px; background: #C9A84C; margin: 0 auto 28px; }
+        .hero-meta { color: #888; font-size: 13px; line-height: 2.2; letter-spacing: 1px; }
+        .hero-meta strong { color: #ddd; }
+
+        /* Photo placeholder */
+        .photo-ph {
+            width: 100%; background: #111;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            border: 2px dashed #333;
+            color: #555; font-size: 12px;
+            letter-spacing: 1px; gap: 10px;
+        }
+        .photo-ph.hero-img { height: 280px; border: none; }
+        .photo-ph.tall    { height: 240px; }
+        .photo-ph.medium  { height: 200px; }
+        .photo-ph.short   { height: 160px; }
+        .photo-ph svg { opacity: 0.35; }
+
+        /* Info bar */
+        .info-bar {
+            background: #C9A84C;
+            display: flex; flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 14px 16px; gap: 10px;
+        }
+        .info-item { text-align: center; }
+        .info-item .il { font-size: 9px; color: rgba(0,0,0,0.55); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
+        .info-item .iv { font-size: 13px; font-weight: 800; color: #000; }
+
+        /* Sections */
+        .sec     { padding: 40px 24px; }
+        .sec-alt { padding: 40px 24px; background: #f8f6f1; }
+        .sec-drk { padding: 40px 24px; background: #080808; }
+
+        .sec-lbl { font-size: 10px; font-weight: 700; letter-spacing: 4px; color: #C9A84C; text-transform: uppercase; margin-bottom: 8px; }
+        .sec-ttl { font-size: 25px; font-weight: 900; color: #1a1a1a; line-height: 1.3; }
+        .sec-ttl-w { font-size: 25px; font-weight: 900; color: #fff; line-height: 1.3; }
+        .sec-rule { width: 36px; height: 3px; background: #C9A84C; margin-top: 12px 0 28px; }
+        .sec-hdr  { margin-bottom: 28px; }
+        .sec-hdr .sec-rule { margin-top: 12px; }
+
+        .body { font-size: 15px; line-height: 1.95; color: #444; margin-bottom: 16px; }
+        .body-w { font-size: 15px; line-height: 1.95; color: #aaa; margin-bottom: 16px; }
+
+        /* Quote */
+        .quote-block { background: #080808; padding: 36px 28px; text-align: center; }
+        .quote-mark { font-size: 64px; color: #C9A84C; line-height: 0.4; opacity: 0.25; font-family: Georgia, serif; margin-bottom: 18px; }
+        .quote-txt { font-size: 22px; font-weight: 900; color: #fff; letter-spacing: 5px; line-height: 1.9; }
+        .quote-txt span { color: #C9A84C; }
+        .quote-src { font-size: 11px; color: #555; margin-top: 16px; letter-spacing: 2px; }
+
+        /* Stats */
+        .stats-row { display: flex; gap: 10px; margin: 24px 0; flex-wrap: wrap; }
+        .stat-card { flex: 1; min-width: 100px; background: #080808; padding: 18px 12px; text-align: center; }
+        .stat-n { font-size: 30px; font-weight: 900; color: #C9A84C; line-height: 1; margin-bottom: 8px; }
+        .stat-d { font-size: 11px; color: #666; line-height: 1.5; }
+
+        /* Milestone highlight */
+        .hl-box { background: #fff8e6; border-left: 4px solid #C9A84C; border: 1px solid #e5d8a5; border-left: 4px solid #C9A84C; padding: 18px 20px; margin: 20px 0; }
+        .hl-ttl { font-size: 13px; font-weight: 800; color: #1a1a1a; margin-bottom: 10px; letter-spacing: 1px; }
+        .hl-txt { font-size: 13px; color: #555; line-height: 1.8; }
+
+        /* Check list */
+        .cl { list-style: none; margin: 10px 0; }
+        .cl li { display: flex; align-items: flex-start; gap: 10px; padding: 5px 0; font-size: 14px; color: #444; line-height: 1.7; }
+        .cl li::before { content: "▸"; color: #C9A84C; flex-shrink: 0; margin-top: 2px; }
+
+        /* Steps */
+        .steps { margin: 22px 0; }
+        .step { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+        .step-n { width: 36px; height: 36px; background: #C9A84C; color: #000; font-size: 16px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .step-body .st { font-weight: 800; font-size: 15px; color: #fff; margin-bottom: 5px; }
+        .step-body .sd { font-size: 13px; color: #888; line-height: 1.8; }
+
+        /* Curriculum grid */
+        .cur-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+        .cur-card { background: #fff; border: 1px solid #e8e2d8; border-top: 3px solid #C9A84C; padding: 20px 16px; }
+        .cur-icon { font-size: 22px; margin-bottom: 10px; }
+        .cur-ttl { font-size: 13px; font-weight: 800; color: #1a1a1a; margin-bottom: 7px; letter-spacing: 0.5px; }
+        .cur-desc { font-size: 12px; color: #777; line-height: 1.7; }
+
+        /* Schedule */
+        .sched { margin: 16px 0; display: flex; flex-direction: column; gap: 8px; }
+        .sched-row { display: flex; overflow: hidden; }
+        .sched-time { background: #080808; color: #C9A84C; padding: 14px 16px; font-size: 12px; font-weight: 700; min-width: 138px; display: flex; align-items: center; letter-spacing: 0.5px; }
+        .sched-row.break .sched-time  { background: #777; color: #fff; }
+        .sched-row.rest  .sched-time  { background: #bbb; color: #fff; }
+        .sched-info { flex: 1; background: #f3f1ec; padding: 14px 16px; }
+        .sched-row.break .sched-info { background: #ebebeb; }
+        .sched-row.rest  .sched-info { background: #e5e5e5; }
+        .sched-ttl { font-weight: 700; font-size: 13px; color: #1a1a1a; margin-bottom: 3px; }
+        .sched-sub { font-size: 11px; color: #999; }
+
+        /* Pricing */
+        .ptable { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+        .ptable thead tr { background: #080808; color: #C9A84C; }
+        .ptable thead th { padding: 13px 10px; text-align: left; font-weight: 700; letter-spacing: 1px; font-size: 11px; }
+        .ptable tbody tr { border-bottom: 1px solid #eee; }
+        .ptable tbody tr:nth-child(even) { background: #faf8f3; }
+        .ptable tbody tr.feat { background: #fff8e4; border-left: 3px solid #C9A84C; }
+        .ptable td { padding: 13px 10px; vertical-align: middle; }
+        .pkg-en { font-weight: 700; color: #1a1a1a; font-size: 13px; margin-bottom: 3px; }
+        .pkg-zh { color: #999; font-size: 11px; }
+        .price-v { font-weight: 900; color: #C9A84C; font-size: 17px; }
+        .price-u { font-size: 10px; color: #bbb; display: block; }
+        .disc-note { background: #fff8e4; border-left: 4px solid #C9A84C; padding: 14px 16px; font-size: 13px; color: #555; line-height: 1.9; margin-top: 12px; }
+
+        /* Awards */
+        .award-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 20px 0; }
+        .award-card { background: #080808; padding: 20px 12px; text-align: center; }
+        .award-ico { font-size: 26px; margin-bottom: 10px; }
+        .award-ttl { font-size: 11px; font-weight: 700; color: #C9A84C; letter-spacing: 1px; margin-bottom: 10px; line-height: 1.6; }
+        .award-items { list-style: none; font-size: 11px; color: #888; line-height: 2.1; }
+
+        /* Photo grids */
+        .pg2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 16px 0; }
+        .pg3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 16px 0; }
+
+        /* CTA */
+        .cta { background: #050505; padding: 48px 24px; text-align: center; }
+        .cta-ttl { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: 3px; margin-bottom: 8px; }
+        .cta-sub { font-size: 13px; color: #666; letter-spacing: 1px; margin-bottom: 32px; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+        .cc { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); padding: 18px 14px; }
+        .cc .cl2 { font-size: 9px; color: #C9A84C; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 7px; }
+        .cc .cv  { font-size: 13px; color: #fff; font-weight: 600; }
+        .cc .cph { font-size: 12px; color: #444; font-style: italic; }
+
+        /* QR */
+        .qr-area { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+        .qr-block { text-align: center; }
+        .qr-box { width: 120px; height: 120px; background: #fff; border: 2px dashed #C9A84C; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 8px; }
+        .qr-box span { font-size: 10px; color: #C9A84C; text-align: center; line-height: 1.6; padding: 0 10px; }
+        .qr-lbl { font-size: 11px; color: #666; letter-spacing: 1px; }
+
+        /* Footer */
+        .footer { background: #030303; padding: 30px 24px; text-align: center; }
+        .foot-logo-ph { width: 60px; height: 60px; border: 1px dashed #C9A84C; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 10px; color: #C9A84C; }
+        .foot-name { font-size: 15px; font-weight: 800; color: #C9A84C; letter-spacing: 3px; }
+        .foot-tag  { font-size: 11px; color: #444; letter-spacing: 1.5px; margin-top: 6px; line-height: 1.9; }
+        .foot-rule { width: 36px; height: 1px; background: #222; margin: 16px auto; }
+        .foot-copy { font-size: 10px; color: #333; letter-spacing: 1px; }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .hero-title-en { font-size: 40px; }
+            .hero-title-zh { font-size: 20px; }
+            .cur-grid  { grid-template-columns: 1fr; }
+            .award-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .stats-row { gap: 8px; }
+            .stat-n { font-size: 24px; }
+            .pg3 { grid-template-columns: 1fr 1fr; }
+            .sched-time { min-width: 110px; font-size: 11px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Panthers DBL</h1>
-    <!-- Your content here -->
-</body>
-</html>
+<div class="article-wrapper">
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<div class="hero">
+
+    <div class="hero-logo-bar">
+        <img src="Panthers Logo.JPG" class="hero-logo-bar"style="width:20%">
+    </div>
+
+    <div class="hero-content">
+        <div class="hero-eyebrow">2026 · 暑期精英训练营</div>
+        <div class="hero-title-en">I GOT NOW</div>
+        <div class="hero-title-zh">我 即 当 下</div>
+        <div class="hero-rule"></div>
+        <div class="hero-meta">
+            <strong>黑豹篮球学院 · Panthers Basketball Academy</strong><br>
+            <strong>2026年7月6日 — 7月24日</strong><br>
+            哈罗北京体育馆 · Harrow Beijing Sports Hall
+        </div>
+    </div>
+
+    <!-- Hero Banner Image -->
+	<img src="IMG_9734 2.JPG" style="width:100%;">
+    <div class="IMG_0964 2.JPG">
+    </div>
+
+
+<!-- ══════════════════════════════════════
+     KEY INFO BAR
+══════════════════════════════════════ -->
+<div class="info-bar">
+    <div class="info-item"><div class="il">日期</div><div class="iv">7月6日–24日</div></div>
+    <div class="info-item"><div class="il">地点</div><div class="iv">哈罗北京</div></div>
+    <div class="info-item"><div class="il">对象</div><div class="iv">6–19岁</div></div>
+    <div class="info-item"><div class="il">周期</div><div class="iv">3周精英营</div></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     OPENING
+══════════════════════════════════════ -->
+<div class="sec">
+    <p class="body">
+        当下，是一个球员最真实的状态。<br>
+        不是昨天的荣耀，不是明天的幻想——<br>
+        <strong>「我即当下」，是黑豹篮球学院对每一位踏上球场的年轻人最重要的告诫。</strong>
+    </p>
+    <p class="body">
+        2025年暑假，黑豹篮球学院将在哈罗北京体育馆举办年度旗舰项目——<strong>「I GOT NOW」精英训练营</strong>，面向全国青少年球员正式开放招募。这不是一个普通的暑期班，而是一次以国际竞技标准构建的系统化成长旅程。
+    </p>
+
+    <div class="pg2">
+       <img src="IMG_1152 2.JPG" style="width:100%;">
+    <div class="IMG_1152 2.JPG">
+       <img src="IMG_0964 2.JPG" style="width:100%;">
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     QUOTE
+══════════════════════════════════════ -->
+<div class="quote-block">
+    <div class="quote-mark">"</div>
+    <div class="quote-txt">冠 军，<span>是 训 练 出 来 的</span>。</div>
+    <div class="quote-src">— Nahtral 教练 · 黑豹篮球学院创始人</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ABOUT PANTHERS
+══════════════════════════════════════ -->
+<div class="sec-alt">
+    <div class="sec-hdr">
+        <div class="sec-lbl">ABOUT PANTHERS</div>
+        <div class="sec-ttl">关于黑豹篮球学院</div>
+        <div class="sec-rule"></div>
+    </div>
+
+    <p class="body">
+        黑豹篮球学院（Panthers Basketball Academy）由 <strong>Nahtral 教练</strong> 于 2014 年创立于北京，是中国少有的、以<strong>国际职业执教体系为核心</strong>长期扎根本地青少年篮球的外教主导型学院。
+    </p>
+    <p class="body">
+        Nahtral 教练拥有<strong>逾20年国际执教履历</strong>，执教经验横跨美国、欧洲及亚洲职业联赛，训练理念与 NCAA 及国际竞技标准全面接轨。他选择留守北京、持续深耕，因为他相信：<strong>中国青少年篮球真正需要的，是一套经过在地验证、可持续输出的国际成长体系。</strong>
+    </p>
+
+    <!-- Coach Photo -->
+       <img src="260308AaronDSC06000.jpg" style="width:100%">
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+        <div class="stat-card"><div class="stat-n">200+</div><div class="stat-d">培养球员总人数</div></div>
+        <div class="stat-card"><div class="stat-n">10+</div><div class="stat-d">深耕北京年数</div></div>
+        <div class="stat-card"><div class="stat-n">NCAA</div><div class="stat-d">多名球员晋升一级联赛</div></div>
+        <div class="stat-card"><div class="stat-n">No.1</div><div class="stat-d">首位获美国全额体育奖学金球员</div></div>
+    </div>
+
+    <div class="hl-box">
+        <div class="hl-ttl">🏆 黑豹里程碑</div>
+        <ul class="cl">
+            <li>培养中国首位获得美国大学<strong>全额体育奖学金</strong>的球员</li>
+            <li>与哈罗北京联合创办 <strong>DBL高中篮球联赛</strong></li>
+            <li>2013年中国红牛极限篮球赛<strong>全国冠军</strong></li>
+            <li>200+ 球员从这里出发，走向更大的舞台</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     THE NAHTRAL WAY
+══════════════════════════════════════ -->
+<div class="sec-drk">
+    <div class="sec-hdr">
+        <div class="sec-lbl">THE NAHTRAL WAY</div>
+        <div class="sec-ttl-w">纳赫特尔执教理念</div>
+        <div class="sec-rule"></div>
+    </div>
+
+    <p class="body-w">
+        许多人对"国际化训练"的理解，停留在"外教带球"的层面。黑豹的执教体系，远不止于此。
+    </p>
+    <p class="body-w">
+        Nahtral 教练坚信，真正的篮球能力由三个不可分割的维度构成——三者缺一，球员的天花板就会提前到来。
+    </p>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-body">
+                <div class="st">身体素养 Physical Foundation</div>
+                <div class="sd">协调性、爆发力、核心力量与体能系统的建立。没有足够的身体素养，技术的上限就会提前到来——这是一切动作的地基。</div>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-body">
+                <div class="st">技术系统 Skill System</div>
+                <div class="sd">投篮机制、步法、持球与无球技术。不追求"好看"，追求在真实竞赛压力下的稳定输出。每一个动作都可重复、可量化、可训练。</div>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-n">3</div>
+            <div class="step-body">
+                <div class="st">篮球智商 Basketball IQ</div>
+                <div class="sd">战术执行、场上视野、高压对决中的冷静决策——这是区分好球员与卓越球员的真正分水岭，也是国内训练体系最普遍缺失的一环。</div>
+            </div>
+        </div>
+    </div>
+
+    <p class="body-w" style="border-top:1px solid #1a1a1a; padding-top:20px; font-style:italic; color:#555; font-size:13px;">
+        "我们训练的不只是球技，而是一个球员面对竞争时的完整自我。"<br>
+        <span style="color:#3a3a3a; font-size:11px; letter-spacing:1px;">— Nahtral · 创始人主教练</span>
+    </p>
+</div>
+
+<!-- ══════════════════════════════════════
+     CAMP CURRICULUM
+══════════════════════════════════════ -->
+<div class="sec">
+    <div class="sec-hdr">
+        <div class="sec-lbl">CAMP CURRICULUM</div>
+        <div class="sec-ttl">训练营课程体系</div>
+        <div class="sec-rule"></div>
+    </div>
+
+    <p class="body">三周精英营，以竞赛为导向，以成长为目标，每一天都有清晰的训练重点与可量化的进步指标。</p>
+
+    <div class="cur-grid">
+        <div class="cur-card">
+            <div class="cur-icon">🎯</div>
+            <div class="cur-ttl">技术精进</div>
+            <div class="cur-desc">投篮机制 · 步法 · 持球技术 · 进攻与防守专项强化训练</div>
+        </div>
+        <div class="cur-card">
+            <div class="cur-icon">🧠</div>
+            <div class="cur-ttl">篮球智商</div>
+            <div class="cur-desc">战术执行 · 场上视野 · 高压对决中的冷静决策能力训练</div>
+        </div>
+        <div class="cur-card">
+            <div class="cur-icon">💪</div>
+            <div class="cur-ttl">身体素养</div>
+            <div class="cur-desc">协调性 · 爆发力 · 核心力量 · 体能系统科学构建</div>
+        </div>
+        <div class="cur-card">
+            <div class="cur-icon">🏅</div>
+            <div class="cur-ttl">竞赛模拟</div>
+            <div class="cur-desc">内部对抗赛 · 精英联赛热身 · 锦标赛环境真实模拟</div>
+        </div>
+        <div class="cur-card">
+            <div class="cur-icon">🌐</div>
+            <div class="cur-ttl">国际视野</div>
+            <div class="cur-desc">与北京本地精英队伍、国际学校球队同场切磋交流</div>
+        </div>
+        <div class="cur-card">
+            <div class="cur-icon">📊</div>
+            <div class="cur-ttl">个人评估</div>
+            <div class="cur-desc">营期结束后出具球员评估报告，提供后续发展建议</div>
+        </div>
+    </div>
+
+    <!-- Training photo -->
+    
+    <div class="251229AaronDSC06516.jpg" style="margin-middle:16px;">
+         <img src="251229AaronDSC06516.jpg" style="width:100%"> 
+
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SCHEDULE
+══════════════════════════════════════ -->
+<div class="sec-alt">
+    <div class="sec-hdr">
+        <div class="sec-lbl">DAILY SCHEDULE</div>
+        <div class="sec-ttl">每日训练时间表</div>
+        <div class="sec-rule"></div>
+    </div>
+
+    <div class="sched">
+        <div class="sched-row">
+            <div class="sched-time">09:00 – 12:00</div>
+            <div class="sched-info">
+                <div class="sched-ttl">上午课程 · Morning Session</div>
+                <div class="sched-sub">周一至周六 · Mon – Sat</div>
+            </div>
+        </div>
+        <div class="sched-row break">
+            <div class="sched-time">12:00 – 13:30</div>
+            <div class="sched-info">
+                <div class="sched-ttl">午休时间 · Lunch Break</div>
+                <div class="sched-sub">周一至周五 · Mon – Fri</div>
+            </div>
+        </div>
+        <div class="sched-row">
+            <div class="sched-time">13:30 – 15:30</div>
+            <div class="sched-info">
+                <div class="sched-ttl">下午课程 · Afternoon Session</div>
+                <div class="sched-sub">周一至周五 · 仅全天营员参与</div>
+            </div>
+        </div>
+        <div class="sched-row rest">
+            <div class="sched-time">周日 · Sunday</div>
+            <div class="sched-info" style="background:#ddd;">
+                <div class="sched-ttl" style="color:#888;">休息日 · Rest Day</div>
+                <div class="sched-sub">无训练安排</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hl-box" style="margin-top:20px;">
+        <div class="hl-ttl">📍 训练地点</div>
+        <div class="hl-txt">
+            哈罗北京体育馆 · Harrow Beijing Sports Hall<br>
+            <span style="color:#aaa; font-size:12px;">北京 · Beijing</span>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PRICING
+══════════════════════════════════════ -->
+<div class="sec">
+    <div class="sec-hdr">
+        <div class="sec-lbl">WEEKLY PRICING</div>
+        <div class="sec-ttl">报名费用 · 每周收费标准</div>
+        <div class="sec-rule"></div>
+    </div>
+
+    <table class="ptable">
+        <thead>
+            <tr>
+                <th>套餐</th>
+                <th>每周课时</th>
+                <th>课时费</th>
+                <th>每周费用</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="feat">
+                <td>
+                    <div class="pkg-en">Full week · Full day</div>
+                    <div class="pkg-zh">全周全天（含周六上午）</div>
+                </td>
+                <td>28小时</td>
+                <td>¥300/时</td>
+                <td><div class="price-v">¥8,400</div><span class="price-u">/ 每周</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="pkg-en">Full week · Mornings</div>
+                    <div class="pkg-zh">全周上午</div>
+                </td>
+                <td>18小时</td>
+                <td>¥300/时</td>
+                <td><div class="price-v">¥5,400</div><span class="price-u">/ 每周</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="pkg-en">Mon–Fri · Mornings</div>
+                    <div class="pkg-zh">周一至五 · 上午</div>
+                </td>
+                <td>15小时</td>
+                <td>¥300/时</td>
+                <td><div class="price-v">¥4,500</div><span class="price-u">/ 每周</span></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="pkg-en">Mon–Fri · Afternoons</div>
+                    <div class="pkg-zh">周一至五 · 下午</div>
+                </td>
+                <td>10小时</td>
+                <td>¥300/时</td>
+                <td><div class="price-v">¥3,000</div><span class="price-u">/ 每周</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="disc-note">
+        <strong>🎁 专属优惠</strong><br>
+        · <strong>早鸟优惠</strong>：提前报名享 9.5折（5% off）<br>
+        · <strong>兄弟姐妹优惠</strong>：第二位孩子享 9.5折（5% off）<br>
+        · 详情及截止日期请联系我们咨询
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     AWARDS & PERKS
+══════════════════════════════════════ -->
+<div class="sec-alt">
+    <div class="sec-hdr">
+        <div class="sec-lbl">AWARDS &amp; PERKS</div>
+        <div class="sec-ttl">营地奖励与专属福利</div>
+        <div class="sec-rule"></div>
+    </div>
+
+    <div class="award-grid">
+        <div class="award-card">
+            <div class="award-ico">🎽</div>
+            <div class="award-ttl">全天营员<br>专属礼包</div>
+            <ul class="award-items">
+                <li>限定营服 × 2件</li>
+                <li>黑豹定制背包</li>
+            </ul>
+        </div>
+        <div class="award-card">
+            <div class="award-ico">👕</div>
+            <div class="award-ttl">所有营员<br>专属福利</div>
+            <ul class="award-items">
+                <li>限定「我即当下」</li>
+                <li>营服 × 1件</li>
+            </ul>
+        </div>
+        <div class="award-card">
+            <div class="award-ico">🏆</div>
+            <div class="award-ttl">每周最佳<br>球员 MVP</div>
+            <ul class="award-items">
+                <li>篮球鞋一双</li>
+                <li>MVP纪念T恤</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     GALLERY
+══════════════════════════════════════ -->
+<div class="sec">
+    <div class="sec-hdr">
+        <div class="sec-lbl">GALLERY</div>
+        <div class="sec-ttl">黑豹训练实录</div>
+        <div class="sec-rule"></div>
+    </div>
+
+    <div class="pg3">
+        <div class="photo-ph short" style="background:#f5f5f5;">
+	<img src="IMG_1733 2.JPG" style="width:100%;">
+        </div>
+        <div class="photo-ph short" style="background:#f5f5f5;">
+	<img src="251224AaronDSC04869.jpg" style="width:100%;">
+        </div>
+        <div class="photo-ph short" style="background:#f5f5f5;">
+	<img src="260111AaronDSC01994.jpg" style="width:100%;">
+        </div>
+</div>
+
+    <div class="pg2">
+        <div class="photo-ph short" style="background:#f5f5f5;">
+	<img src="IMG_9757 2.JPG" style="width:100%;">
+        </div>
+        <div class="photo-ph short" style="background:#f5f5f5;">
+	<img src="IMG_9734 2.JPG" style="width:100%;">
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CTA / REGISTRATION
+══════════════════════════════════════ -->
+<div class="cta">
+    <div class="cta-ttl">立即报名 · 限额招募中</div>
+    <div class="cta-sub">名额有限，先报先得 · 早鸟优惠名额即将截止</div>
+
+    <div class="contact-grid">
+        <div class="cc">
+            <div class="cl2">📞 电话咨询</div>
+            <div class="cph">[ 13611358724 ]</div>
+        </div>
+        <div class="cc">
+            <div class="cl2">💬 微信咨询</div>
+            <div class="cph">[SuperNahtral_Sports]</div>
+        </div>
+        <div class="cc">
+            <div class="cl2">📧 邮件联系</div>
+            <div class="cph">[ 13611358724 ]</div>
+        </div>
+        <div class="cc">
+            <div class="cl2">📍 训练地点</div>
+            <div class="cv">哈罗北京体育馆</div>
+        </div>
+    </div>
+
+    <!-- QR Codes -->
+    <div class="qr-area">
+        <div class="qr-block">
+            <div class="qr-box">
+	<img src="Panthers微信二维码.jpg" style="height:100%;">
+            </div>
+            <div class="qr-lbl">扫码咨询报名</div>
+        </div>
+        <div class="qr-block">
+            <div class="qr-box">
+	<img src="PanthersChannel.jpg" style="height:100%;">
+            </div>
+            <div class="qr-lbl">扫码关注视频号</div>
+        </div>
+    </div>
+
+    <p style="color:#3a3a3a; font-size:12px; margin-top:24px; letter-spacing:1px; line-height:2;">
+        扫码关注 Panthers黑豹篮球 · 视频号<br>
+        日常训练实录 · 比赛集锦 · 球员成长故事
+    </p>
+</div>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<div class="footer">
+
+    <div class="foot-logo-ph">
+	<img src="Panthers Logo.JPG" class="foot-logo-ph"style="height:100%;">
+        </div>
+    <div class="foot-name">PANTHERS 黑豹篮球学院</div>
+    <div class="foot-tag">
+        The Nahtral Way — Champions are Trained.<br>
+        纳赫特尔方法 · 冠军由此训练而成
+    </div>
+    <div class="foot-rule"></div>
+    <div class="foot-copy">© 2026 Panthers Basketball Academy · Beijing · All Rights Reserved</div>
+</div>
+
+</div>
+
+
+</body></html>
